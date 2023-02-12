@@ -1,3 +1,4 @@
+link bài tập :https://sites.google.com/view/pythonwithnhat/trang-ch%E1%BB%A7
 Bài 1:In 10 lần chữ hello ra màn hình
 for i in range(10):
     print("Hello")
