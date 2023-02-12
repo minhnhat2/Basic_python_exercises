@@ -2,7 +2,7 @@ Link bài tập : https://sites.google.com/view/pythonwithnhat/trang-ch%E1%BB%A7
 
 Bài 1:Nhập 2 số a và b , tính tổng, hiệu, tích và thương 2 số đó biết a bằng 10 và b bằng 5 python
 a = 10
-b = 5
+b = 5 
 # Tính tổng
 tong = a + b
 print("Tổng của a và b là:", tong)
