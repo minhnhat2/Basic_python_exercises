@@ -230,9 +230,18 @@ while b <= A:
 
 Bài 22:in bảng cửu chương rút gọn
 Bảng cửu chương rút gọn là bảng có hàng là kết quả của phép nhân một số với các giá trị từ 1 tới 10. Chúng ta sẽ in 9 hàng tương ứng với các số từ 2 tới 10.
-Bài 23: Viết chương trình quản lý điểm học sinh bao gồm 5 môn : Toán , lý , hóa, văn, anh , mỗi môn gồm 6 cột  là cột điểm "miệng", cột điểm "15 phút",cột điểm "1 tiết" , cột điểm "thi" ,  cột điểm "trung bình mônmôn" ( cột điểm trung bình môn được tính như sau : "miệng" cộng "15 phút" cộng "1 tiết" nhân 2 cộng "thi" nhân 3 , sau đó lấy tổng chia cho 7 sẽ ra điểm trung bình ) và cột " xếp loại" ( Đây là cột xếp theo thứ tự điểm trung bình , nếu trong danh sách có 10 học sinh thì thì cột này sẽ xếp học sinh có điểm ttrung bình cao nhất là 1, người cao thứ 2 là 2 , người cao thứ 3 là 3, ... người thấp nhất là 10)
-Bài 24:In danh sách 24 chữ cái tiếng anh 
-Bài 25:Tạo trò chơi “Cows and Bulls” với cách thức hoạt động như sau:
+for i in range(2, 11):
+    for j in range(1, 11):
+        print(f'{i} x {j} = {i * j}')
+    print()
+    
+Bài 23:In danh sách 24 chữ cái tiếng anh 
+alphabets = 'abcdefghijklmnopqrstuvwxyz'
+
+for alphabet in alphabets:
+    print(alphabet)
+
+Bài 24:Tạo trò chơi “Cows and Bulls” với cách thức hoạt động như sau:
 Tạo ngẫu nhiên một con số có 4 chữ số. Yêu cầu người chơi đoán con số đó.
 Khi người chơi đoán đúng một chữ số nào đó ở đúng vị trí, họ sẽ có một “Cow”. Với mỗi chữ số sai, họ sẽ có một “Bull”. 
 Mỗi khi người dùng đưa ra phỏng đoán, hãy cho họ biết họ có bao nhiêu “Cows” và “Bulls”. Khi người dùng đoán đúng số, trò chơi kết thúc. Theo dõi số lần đoán mà người dùng thực hiện trong suốt trò chơi và họ biết khi kết thúc.
@@ -244,3 +253,65 @@ Welcome to the Cows and Bulls Game!
   >>> 1256
   1 cow, 1 bull
   ...
+
+import random
+def generate_number():
+    number = random.sample(range(10), 4)
+    return int("".join([str(i) for i in number]))
+def count_cows_and_bulls(number, guess):
+    cows = 0
+    bulls = 0
+    for i in range(4):
+        if str(number)[i] == str(guess)[i]:
+            cows += 1
+        elif str(number).find(str(guess)[i]) != -1:
+            bulls += 1
+    return cows, bulls
+def play_game():
+    number = generate_number()
+    attempts = 0
+    while True:
+        guess = int(input("Enter a number: "))
+        attempts += 1
+        cows, bulls = count_cows_and_bulls(number, guess)
+        print("{} cows, {} bulls".format(cows, bulls))
+        if cows == 4:
+            print("You won in {} attempts!".format(attempts))
+            break
+print("Welcome to the Cows and Bulls Game!")
+play_game()
+
+
+Bài 25: Viết chương trình quản lý điểm học sinh bao gồm 5 môn : Toán , lý , hóa, văn, anh , mỗi môn gồm 6 cột  là cột điểm "miệng", cột điểm "15 phút",cột điểm "1 tiết" , cột điểm "thi" ,  cột điểm "trung bình mônmôn" ( cột điểm trung bình môn được tính như sau : "miệng" cộng "15 phút" cộng "1 tiết" nhân 2 cộng "thi" nhân 3 , sau đó lấy tổng chia cho 7 sẽ ra điểm trung bình ) và cột " xếp loại" ( Đây là cột xếp theo thứ tự điểm trung bình , nếu trong danh sách có 10 học sinh thì thì cột này sẽ xếp học sinh có điểm ttrung bình cao nhất là 1, người cao thứ 2 là 2 , người cao thứ 3 là 3, ... người thấp nhất là 10)
+
+subjects = ['Toan', 'Ly', 'Hoa', 'Van', 'Anh']
+# Tạo danh sách chứa các điểm học sinh
+student_scores = []
+# Nhập vào các điểm cho 5 môn học cho từng học sinh
+num_students = int(input("Nhap so luong hoc sinh: "))
+for i in range(num_students):
+    scores = []
+    name = input("Nhap ten hoc sinh: ")
+    scores.append(name)
+    for subject in subjects:
+        midterm = float(input("Nhap diem mieng {}: ".format(subject)))
+        quarter = float(input("Nhap diem 15 phut {}: ".format(subject)))
+        fullterm = float(input("Nhap diem 1 tiet {}: ".format(subject)))
+        exam = float(input("Nhap diem thi {}: ".format(subject)))
+        avg_score = (midterm + quarter + fullterm * 2 + exam * 3) / 7
+        scores.append(avg_score)
+    student_scores.append(scores)
+
+# Sắp xếp danh sách theo điểm trung bình giảm dần
+student_scores.sort(key=lambda x: x[5], reverse=True)
+
+# Cập nhật xếp loại cho mỗi học sinh
+for i in range(len(student_scores)):
+    student_scores[i].append(i + 1)
+
+# In ra bảng điểm
+print("{:<20} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10}".format("Ten", "Toan", "Ly", "Hoa", "Van", "Anh", "Xep Loai"))
+for student in student_scores:
+    print("{:<20} {:<10.2f} {:<10.2f} {:<10.2f} {:<10.2f} {:<10.2f} {:<10d}".format(*student))
+
+
