@@ -1,39 +1,205 @@
 Link bài tập: https://sites.google.com/view/pythonwithnhat/trang-ch%E1%BB%A7
 
 Bài 1: Nhập vào một chuỗi, hãy đếm xem trong chuỗi có bao nhiêu từ (quy định là chuỗi không có ký tự đặc biệt, không số, không có dấu câu, chỉ có ký tự chữ và khoảng trắng)
+string = input("Nhập vào một chuỗi: ")
+word_count = len(string.split())
+print("Số lượng từ trong chuỗi là:", word_count)
+#phương thức split() để tách chuỗi thành các từ, mỗi từ cách nhau bởi khoảng trắng. 
+
 Bài 2: Nhập vào một chuỗi, hãy in từ đầu tiên trong chuỗi
+sentence = input("Nhập vào một chuỗi: ")
+words = sentence.split()
+print("Từ đầu tiên trong chuỗi là:", words[0])
+
 Bài 3: Nhập vào một chuỗi có dạng 3 số nguyên, mỗi số nguyên cách nhau một dấu phẩy, hãy tính tổng 3 số nguyên đó
 VD:
 Nhập: 3, 12, 15
 Tổng: 30
+  
+string = input("Nhập vào một chuỗi có dạng 3 số nguyên, mỗi số nguyên cách nhau một dấu phẩy: ")
+numbers = string.split(',')
+sum = 0
+for number in numbers:
+    sum += int(number)
+print("Tổng của 3 số nguyên là:", sum)
+
 Bài 4: Nhập vào một chuỗi, hãy đếm xem trong chuỗi có bao nhiêu ký tự in hoa, bao nhiêu ký tự in thường, bao nhiêu ký tự số
+
+#Hàm isupper() để kiểm tra xem ký tự đang xét có phải là in hoa hay không.  
+#hàm islower() để kiểm tra xem ký tự đang xét có phải là in thường hay không
+#hàm isdigit() để kiểm tra xem ký tự đang xét có phải là số hay không.
+s = input("Nhập vào một chuỗi: ")
+upper = 0
+lower = 0
+digit = 0
+for char in s:
+    if char.isupper():
+        upper += 1
+    elif char.islower():
+        lower += 1
+    elif char.isdigit():
+        digit += 1
+print("Số ký tự in hoa: ", upper)
+print("Số ký tự in thường: ", lower)
+print("Số ký tự số: ", digit)
+  
 Bài 5: Nhập vào một chuỗi, hãy đếm xem trong chuỗi có bao nhiêu ký tự in hoa, bao nhiêu ký tự in thường, bao nhiêu ký tự số
+  # Tương tự bài 4 =))
 Bài 6: Nhập vào một chuỗi, hãy tách toàn bộ ký tự số trong chuỗi ra rồi tính tổng của chúng
 VD:
 Nhập chuỗi: abd45ecf47wde3s1
 Tổng: 4 + 5 + 4 + 7 + 3 + 1 = 24
+  #hàm isdigit() để kiểm tra xem ký tự đang xét có phải là số hay không.
+
+string = input("Nhập vào một chuỗi: ")
+sum = 0
+for char in string:
+    if char.isdigit():
+        sum += int(char)
+print("Tổng của các số trong chuỗi là:", sum)  
+  
 Bài 7: Nhập vào một chuỗi, hãy tách toàn bộ con số trong chuỗi ra rồi tính tổng của chúng
 VD:
 Nhập chuỗi: abd45ecf47wde3s1
 Tổng: 45 + 47 + 3 + 1 = 96
+  
+string = input("Nhập chuỗi: ")
+total = 0
+number = ""
+for char in string:
+    if char.isdigit():
+        number += char
+    else:
+        if len(number) > 0:
+            total += int(number)
+            number = ""
+if len(number) > 0:
+    total += int(number)
+print("Tổng:", total)
+
 Bài 8: Nhập vào một chuỗi, kiểm tra chuỗi đó có phải là một chuỗi mật khẩu mạnh hay không (một chuỗi mật khẩu mạnh cần có ít nhất 1 ký tự đặc biệt, 1 ký tự in hoa, 1 con số, 1 chữ thường và độ dài phải lớn hơn 6)
+
+password = input("Enter a password: ")
+special_char = False
+upper_char = False
+lower_char = False
+digit = False
+for char in password:
+    if char.isdigit():
+        digit = True
+    elif char.isupper():
+        upper_char = True
+    elif char.islower():
+        lower_char = True
+    elif char in "#$%&'()*+,-./:;<=>?@[\]^_`{|}~":
+        special_char = True
+if len(password) >= 6 and special_char and upper_char and lower_char and digit:
+    print("Password is strong.")
+else:
+    print("Password is weak.")
+
+  
 Bài 9: Nhập vào một số nguyên, hãy chuyển số sang chuỗi, rồi đặt dấu chấm phân tách mỗi 3 chữ số (phân cách phần ngàn) rồi in ra màn hình
 VD:
 Nhập số: 375469485
 Đổi sang chuỗi rồi in ra: 375.469.485
+  
+number = int(input("Nhập số: "))
+number_str = str(number)
+result = ''
+count = 0
+for i in range(len(number_str)-1, -1, -1):
+    result = number_str[i] + result
+    count += 1
+    if count == 3 and i != 0:
+        result = '.' + result
+        count = 0
+print("Đổi sang chuỗi rồi in ra: " + result)
+
 Bài 10: Nhập vào chuỗi a và chuỗi b
 Hãy xóa chuỗi b trong chuỗi a rồi in lại chuỗi a ra màn hình (không dùng hàm replace)
 Ví dụ:
 Chuỗi a: "Xin chào mọi người!"
 Chuỗi b: "Xin chào"
 Sau khi xóa, chuỗi a: " mọi người!"
+  
+a = input("Nhập chuỗi a: ")
+b = input("Nhập chuỗi b: ")
+i = 0
+while i < len(a):
+    if a[i:i+len(b)] == b:
+        a = a[:i] + a[i+len(b):]
+    else:
+        i += 1
+print("Sau khi xóa, chuỗi a:", a)
+
 Bài 11: Nhập vào một list số nguyên L, tìm và in ra giá trị lớn nhất trong L
+ 
+L = list(map(int, input("Nhập vào list số nguyên: ").split()))
+max_value = L[0]
+for num in L:
+    if num > max_value:
+        max_value = num
+print("Giá trị lớn nhất trong list là:", max_value)
+
 Bài 12: Nhập vào một list số nguyên L, nhập vào 2 số nguyên dương a và b (a < b < len(L))
 Tìm và in ra số nhỏ nhất trong list từ vị trí a đến vị trí b
+
+L = list(map(int, input("Nhập list số nguyên L: ").split()))
+a = int(input("Nhập số nguyên dương a: "))
+b = int(input("Nhập số nguyên dương b: "))
+min_value = L[a]
+for i in range(a + 1, b + 1):
+    if L[i] < min_value:
+        min_value = L[i]
+print("Số nhỏ nhất trong list từ vị trí a đến vị trí b là:", min_value)
+
 Bài 13: Nhập vào một list số nguyên L, hãy kiểm tra xem tất cả các phần tử trong mảng có bằng nhau hay không, nếu có thì in True, không có thì in False
+ 
+L = list(map(int, input("Nhập vào list số nguyên L (các phần tử cách nhau bằng dấu cách): ").split()))
+check = True
+for i in range(1, len(L)):
+    if L[i] != L[i-1]:
+        check = False
+        break
+if check:
+    print(True)
+else:
+    print(False)
+
 Bài 14: Nhập vào một list số nguyên L, tìm và in ra giá trị dương đầu tiên của list, nếu không có giá trị dương, ta in ra -1
+
+L = [int(x) for x in input("Nhập vào một list số nguyên L: ").split()]
+for i in L:
+    if i > 0:
+        print(i)
+        break
+else:
+    print(-1)
+
 Bài 15: Nhập vào một list L, hãy tìm và in ra giá trị âm lớn nhất trong L, nếu L không có giá trị âm thì ta in 0
+ 
+L = [int(x) for x in input("Nhập vào list L: ").split()]
+max_negative = 0
+for num in L:
+    if num < 0:
+        if num > max_negative:
+            max_negative = num
+print("Giá trị âm lớn nhất trong L là:", max_negative)
+
 Bài 16: Nhập vào một list số nguyên L, nhập vào số nguyên x, tìm giá trị trong list xa x nhất
+  
+L = list(map(int, input("Nhập vào list L: ").split()))
+x = int(input("Nhập vào số nguyên x: "))
+max_distance = 0
+result = 0
+for num in L:
+    distance = abs(num - x)
+    if distance > max_distance:
+        max_distance = distance
+        result = num
+print("Giá trị trong list xa x nhất:", result)
+  
 Bài 17: Nhập vào một list số nguyên L, tính giá trị trung bình của list L
 Bài 18: Nhập vào một list số nguyên L, hãy kiểm tra xem L có được sắp xếp từ bé đến lớn hay không, nếu có thì in True, không có thì in False
 Bài 19: Nhập vào một list số nguyên L, hãy sắp xếp list L theo thứ tự từ bé đến lớn
