@@ -140,7 +140,7 @@ L_mahoa = [0, 1, 2, 1, 2, 3, 4]
 
 Bài 13:Viết hàm có tham số đầu vào là một dictionary, hãy tạo một dictionary mới hoán đổi giá trị và key của dictionary đầu vào, rồi trả về dicionary mới đó. Nếu sau khi hoán đổi có 2 key trùng nhau (do dictionary đầu vào có 2 giá trị trùng nhau), hàm trả về None
 
-  
+
 Bài 14:Một nhà hàng có các món ăn: Gà rán, hamburger, cocacola
 Giá của gà rán là: 30.000đ
 Giá của hamburger là: 25.000đ
@@ -164,13 +164,19 @@ Phần bên trái có số ký tự là 20 ký tự
 
 
 Bài 15:Viết hàm cho giá trị đầu vào là list số nguyên dương L và số nguyên dương k. Hãy tạo và trả về một list L_kq có các phần tử là giá trị của phần tử xuất hiện nhiều hơn k lần trong list L theo thứ tự tăng dần
+
+
 Bài 16:Viết hàm cho giá trị đầu vào là list số nguyên dương L và số nguyên dương k. Tìm và trả về đoạn list dài nhất trong L có giá trị trung bình là k
+
+
 Bài 17:Một người dùng số tiền là U đô-la và V Euro để mua một loại nguyên liệu sản xuất.
 Có N công ty nước ngoài bán nguyên liệu trên được đánh số từ 1 đến N. Công ty thứ i có giá bán Ai đô la/1 kg nguyên liệu và Bi Euro/1 kg nguyên liệu.
 Tuy nhiên, tại mỗi công ty chỉ bán nguyên liệu cho một khách hàng hoặc theo đô-la, hoặc theo Euro.
 Hãy giúp người đó tìm cách chọn ra 2 công ty để mua hàng sao cho số lượng nguyên liệu sản xuất có thể mua được là nhiều nhất.
 Nhập vào: U, V và List A và List B
 In ra: Số lượng nguyên liệu S (kg) người đó mua được với 2 chữ số thập phân.
+
+
 Bài 18:Phỏng đoán COLLATZ
 Giả sử ta có một số n
 Phỏng đoán COLLATZ hoạt động như sau:
@@ -188,6 +194,8 @@ In ra:
 4,2,1
 5,16,8,4,2,1
 6,3,10,5,16,8,4,2,1
+
+
 Bài 19:Một khách sạn có N phòng đôi được đánh số từ 1 đến N và M đoàn khách.
 Với mỗi đoàn khách, ta xếp mỗi cặp khách của đoàn vào một phòng trống theo thứ tự phòng tăng dần.
 Nếu đoàn khách có số người lẻ thì người khách cuối cùng được xếp vào một phòng trống tiếp theo.
@@ -202,11 +210,14 @@ Ví dụ 2:
 N = 5, M = 3
 doankhach = [2,3,2]
 Ta in: 2, 2, 1, 2, 0
+
+
 Bài 20:Cho số tự nhiên n được nhập vào từ bàn phím, bạn hãy viết hàm kiểm tra xem n có phải là số nguyên tố không, nếu có trả về True, ngược lại trả về False.
 Số nguyên tố là các số tự nhiên mà chỉ có 2 ước là 1 và chính nó. Ví dụ: 2, 3, 5, 7, 11, 13, 17,... là các số nguyên tố.
 Ví dụ:
 Nếu bạn nhập n = 9 thì màn hình sẽ hiển thị ra False
 Nếu bạn nhập n = 3 thì màn hình sẽ hiển thị ra True
+
 
 Bài 21 :Cho trước list res là list chứa các phần tử integer được nhập từ bàn phím. Viết chương trình Python để tìm ra các phần tử chẵn trong list đó. Kế tiếp, in kết quả là một list các số chẵn ra màn hình.
 Ví dụ: 
@@ -217,6 +228,8 @@ với res = [10, 22, 33, 45, 79, 81] thì hiển thị là [10,22]
 ví dụ :
 input: [1,2,3]
 output : [2]
+
+  
 Bài 22:Cho 3 số nguyên a, b và c là 3 cạnh của một tam giác. Viết chương trình để kiểm tra xem tam giác đó là tam giác đều, tam giác cân hay tam giác thường và in ra màn hình kết quả  "Equilateral triangle", "Isosceles triangle" hoặc "Scalene triangle" tương ứng.
 Ví dụ:
 Với a = 20, b = 20, c = 20 thì kết quả hiển thị là "Equilateral triangle"
@@ -229,6 +242,8 @@ Note:
 + Một tam giác được gọi là tam giác đều khi tam giác đó có 3 cạnh bằng nhau
 + Một tam giác được gọi là tam giác cân khi tam giác đó có ít nhất hai cạnh bằng nhau
 + Một tam giác được gọi là tam giác thường khi tam giác có 3 cạnh cấu thành thoả điều kiện là tam giác 
+
+
 Bài 23:Cho trước chuỗi str được nhập từ bàn phím. Viết chương trình Python để tìm ra từ có độ dài lớn hơn 3. Sau đó, in kết quả là mội list các chuỗi thoả mãn điều kiện đó ra màn hình
 Ví dụ:
 Với str = "You are an awesome man", thì hiển thị là ['awesome']
@@ -240,6 +255,8 @@ input:"The quick brown fox jumps over the lazy dog"
 output: "['quick', 'brown', 'jumps', 'over', 'lazy']"
 Gợi ý
 Hoàn thành bài tập này bằng cách viết hàm để kiểm tra các từ trong chuỗi đã cho có độ dài lớn hơn 3. Có thể dùng thêm hàm split() để loại bỏ các khoảng trắng trong chuỗi.
+
+
 Bài 24:Cho trước nlà số nguyên được nhập từ bàn phím. Viết chương trình Python để kiểm tra số đó có phải là số abundant hay là không. Sau đó, in kết quả True hoặc False ra màn hình
 Ví dụ:
 Với n = 55 thì hiển thị là False
@@ -250,11 +267,15 @@ Với n = 10 thì hiển thị là False
 Gợi ý
 Hoàn thành bài tập này bằng cách dùng vòng lặp for
 Lưu ý: Trong lĩnh vực lý thuyết số, một số tự nhiên n được gọi là số abundant khi mà tổng các ước số của n (không tính n) lớn hơn n. Ví dụ số 12 có các ước số là 1, 2, 3, 4, 6 có tổng là 1 + 2 + 3 + 4 + 6 = 16 > 12
+
+
 Bài 25: Viết chương trình bằng python tính chu vi & diệntích các hình (abstract)
 Viết chương trình tính chu vi và điện tích của một số hình như sau:
 Hình tròn
 Hình chữ nhật
 Hình tam giác
+
+
 Bài 26: Viết chương trình quản lý sinh viên trong Python. Mỗi đối tượng sinh viên có các thuộc tính sau: "id", "tên", "giới tính"," tuổi", "điểm toán", "điểm lý", "điểm hóa","điểm văn" ,  "điểm anh" , "điểm trung bình môn"và "học lực "
 Id là mã sinh viên tự động tăng.
 Trong các thuộc tính "điểm toán" , "điểm lý" , "điểm hóa", "điểm văn" , "điểm anh" có các cột điểm như "điểm quá trình " , "điểm thực hành" , điểm thi cuối khóa"  và "điểm trung bình" và "đánh giá"
