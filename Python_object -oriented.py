@@ -1,16 +1,133 @@
 Link bài tập :https://sites.google.com/view/pythonwithnhat/trang-ch%E1%BB%A7
 
 Bài 1 :Viết hàm đưa vào 2 số nguyên, số nào lớn hơn thì in bảng cửu chương của số đó
+  
+def print_times_table(num1, num2):
+    max_num = max(num1, num2)
+    for i in range(1, 11):
+        print(f"{max_num} x {i} = {max_num * i}")
+num1 = int(input("Nhập số thứ nhất: "))
+num2 = int(input("Nhập số thứ hai: "))
+print_times_table(num1, num2)
+
+
 Bài 2:Viết hàm đưa vào 1 số nguyên a, kiểm tra xem a có phải là số nguyên tố hay không
+  
+def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, num):
+        if num % i == 0:
+            return False
+    return True
+a = int(input("Nhập một số nguyên: "))
+if is_prime(a):
+    print(f"{a} là số nguyên tố")
+else:
+    print(f"{a} không phải là số nguyên tố")
+
 Bài 3:Viết hàm đưa vào 1 số nguyên a, kiểm tra xem a có phải là số Armstrong hay không
+  
+def is_armstrong(num):
+    num_str = str(num)
+    num_len = len(num_str)
+    sum = 0
+    for char in num_str:
+        sum += int(char)**num_len
+    return sum == num
+a = int(input("Nhập một số nguyên: "))
+if is_armstrong(a):
+    print(f"{a} là số Armstrong")
+else:
+    print(f"{a} không phải là số Armstrong")
+
 Bài 4:Viết hàm đưa vào 1 list số nguyên, tìm và trả về vị trí có giá trị lớn nhất trong list
+  
+def find_max_index(numbers):
+    max_index = 0
+    for i in range(1, len(numbers)):
+        if numbers[i] > numbers[max_index]:
+            max_index = i
+    return max_index
+
+numbers = list(map(int, input("Nhập các số nguyên cách nhau bằng dấu cách: ").split()))
+max_index = find_max_index(numbers)
+print(f"Vị trí có giá trị lớn nhất trong list là {max_index} với giá trị {numbers[max_index]}")
+
 Bài 5:Viết hàm đưa vào một list số nguyên và một số nguyên dương k. Hãy tìm và trả về vị trí của phần tử đầu tiên có giá trị k trong list số nguyên, nếu không có thì trả về -1
+def find_first_index(numbers, k):
+    for i, value in enumerate(numbers):
+        if value == k:
+            return i
+    return -1
+# Cho người dùng nhập dữ liệu vào cho list số nguyên
+numbers_input = input("Nhập vào một list số nguyên, các số cách nhau bởi dấu phẩy: ")
+numbers = [int(x) for x in numbers_input.split(",")]
+# Cho người dùng nhập dữ liệu vào cho số nguyên k
+k = int(input("Nhập vào một số nguyên dương: "))
+# Gọi hàm với một list số nguyên và một số nguyên
+print(find_first_index(numbers, k))
+
 Bài 6:Viết hàm đưa vào 1 list có các phần tử là chuỗi, tìm và trả về chuỗi ngắn nhất trong list
+
+def find_shortest_string(strings):
+    shortest_string = strings[0]
+    for string in strings[1:]:
+        if len(string) < len(shortest_string):
+            shortest_string = string
+    return shortest_string
+strings = input("Nhập các chuỗi cách nhau bằng dấu cách: ").split()
+shortest_string = find_shortest_string(strings)
+print(f"Chuỗi ngắn nhất trong list là: {shortest_string}")
+
 Bài 7:Viết hàm đưa vào 1 list số nguyên L và 1 số nguyên dương a. Hãy tính và trả về giá trị trung bình của a phần tử đầu tiên trong L
+  
+def average_of_first_n_elements(numbers, n):
+    first_n_elements = numbers[:n]
+    total = 0
+    for number in first_n_elements:
+        total += number
+    return total / n
+
+numbers = list(map(int, input("Nhập danh sách số nguyên cách nhau bằng dấu cách: ").split()))
+a = int(input("Nhập số nguyên dương a: "))
+average = average_of_first_n_elements(numbers, a)
+print(f"Giá trị trung bình của {a} phần tử đầu tiên trong danh sách là: {average}")
+
 Bài 8:Viết hàm đưa vào 1 list số nguyên L và 1 số nguyên dương a. Hãy tìm và trả về một list mới có số phần tử là a, giá trị các phần tử là các số nguyên tố tìm được trong list L
+
+def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, num):
+        if num % i == 0:
+            return False
+    return True
+def find_first_n_prime_numbers(numbers, n):
+    prime_numbers = []
+    count = 0
+    for number in numbers:
+        if is_prime(number) and count < n:
+            prime_numbers.append(number)
+            count += 1
+    return prime_numbers
+numbers = list(map(int, input("Nhập danh sách số nguyên cách nhau bằng dấu cách: ").split()))
+a = int(input("Nhập số nguyên dương a: "))
+prime_numbers = find_first_n_prime_numbers(numbers, a)
+print(f"Danh sách {a} số nguyên tố đầu tiên trong danh sách là: {prime_numbers}")
+
 Bài 9:Viết hàm đưa vào 1 list số nguyên L và 1 số nguyên dương a. Hãy tìm và trả về giá trị lớn thứ a trong list L (nếu a = 1 thì tìm giá trị lớn nhất, a = 2 thì tìm giá trị lớn nhì, a = 3 thì tìm giá trị lớn ba,...)
+
+def find_a_largest_number(L, a):
+    L.sort(reverse=True)
+    return L[a-1]
+  
 Bài 10:Viết hàm đưa vào 1 dictionary có các phần tử có giá trị là số nguyên, tìm và trả về key có giá trị lớn nhất
+
+
 Bài 11 :Viết hàm đưa vào 1 dictionary có các phần tử có key là chuỗi, tìm và trả về giá trị của key có độ dài lớn nhất
+
+  
 Bài 12:Viết hàm có tham số đầu vào là một list L có các phần tử là chuỗi. Hãy tạo ra một dictionary D mã hóa, với mỗi một phần tử trong L được mã hóa thành một con số (theo thứ tự từ 0 tăng dần lên 1 đơn vị). Sau đó trả về list đã được mã hóa
 Ví dụ:
 Cho
@@ -19,7 +136,11 @@ Xây dựng dictionary mã hóa:
 D = {'đen':0,'vàng':1,'xanh':2,'đỏ':3,'hồng':4}
 Trả về List mã hóa:
 L_mahoa = [0, 1, 2, 1, 2, 3, 4]
+
+
 Bài 13:Viết hàm có tham số đầu vào là một dictionary, hãy tạo một dictionary mới hoán đổi giá trị và key của dictionary đầu vào, rồi trả về dicionary mới đó. Nếu sau khi hoán đổi có 2 key trùng nhau (do dictionary đầu vào có 2 giá trị trùng nhau), hàm trả về None
+
+  
 Bài 14:Một nhà hàng có các món ăn: Gà rán, hamburger, cocacola
 Giá của gà rán là: 30.000đ
 Giá của hamburger là: 25.000đ
@@ -40,6 +161,8 @@ Tổng trước thuế185.000đ
 Thuế(5%)9.250đ
 Tổng sau thuế194.250đ
 Phần bên trái có số ký tự là 20 ký tự
+
+
 Bài 15:Viết hàm cho giá trị đầu vào là list số nguyên dương L và số nguyên dương k. Hãy tạo và trả về một list L_kq có các phần tử là giá trị của phần tử xuất hiện nhiều hơn k lần trong list L theo thứ tự tăng dần
 Bài 16:Viết hàm cho giá trị đầu vào là list số nguyên dương L và số nguyên dương k. Tìm và trả về đoạn list dài nhất trong L có giá trị trung bình là k
 Bài 17:Một người dùng số tiền là U đô-la và V Euro để mua một loại nguyên liệu sản xuất.
