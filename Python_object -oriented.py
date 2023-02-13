@@ -218,6 +218,16 @@ Ví dụ:
 Nếu bạn nhập n = 9 thì màn hình sẽ hiển thị ra False
 Nếu bạn nhập n = 3 thì màn hình sẽ hiển thị ra True
 
+def is_prime(n):
+    a=0 
+    for i in range(1,n+1):
+      if n%i==0:
+        a+=1
+    if a==2:
+      return True
+    return False
+n = int(input())
+print(is_prime(n))
 
 Bài 21 :Cho trước list res là list chứa các phần tử integer được nhập từ bàn phím. Viết chương trình Python để tìm ra các phần tử chẵn trong list đó. Kế tiếp, in kết quả là một list các số chẵn ra màn hình.
 Ví dụ: 
@@ -229,7 +239,15 @@ ví dụ :
 input: [1,2,3]
 output : [2]
 
-  
+res = []
+lengths = int(input())
+for i in range(lengths):
+    n = int(input())
+    res.append(n)
+def evenNum(res):
+    return[x for x in res if x % 2 ==0]
+print(evenNum(res))
+
 Bài 22:Cho 3 số nguyên a, b và c là 3 cạnh của một tam giác. Viết chương trình để kiểm tra xem tam giác đó là tam giác đều, tam giác cân hay tam giác thường và in ra màn hình kết quả  "Equilateral triangle", "Isosceles triangle" hoặc "Scalene triangle" tương ứng.
 Ví dụ:
 Với a = 20, b = 20, c = 20 thì kết quả hiển thị là "Equilateral triangle"
@@ -243,6 +261,24 @@ Note:
 + Một tam giác được gọi là tam giác cân khi tam giác đó có ít nhất hai cạnh bằng nhau
 + Một tam giác được gọi là tam giác thường khi tam giác có 3 cạnh cấu thành thoả điều kiện là tam giác 
 
+a = int(input())
+b = int(input())
+c = int(input())
+typesOfTriangle = ['Scalene triangle', 'Isosceles triangle', 'Equilateral triangle']
+typeTriangle = typesOfTriangle[0]
+lst = []
+Equal = 0
+lst.append(a)
+lst.append(b)
+lst.append(c)
+for i in range(len(lst)):
+    if lst.count(a) > 1:
+        Equal += 1
+    if Equal == 1:
+        typeTriangle = typesOfTriangle[1]
+    elif Equal == 2:
+        typeTriangle = typesOfTriangle[2]
+print(typeTriangle)
 
 Bài 23:Cho trước chuỗi str được nhập từ bàn phím. Viết chương trình Python để tìm ra từ có độ dài lớn hơn 3. Sau đó, in kết quả là mội list các chuỗi thoả mãn điều kiện đó ra màn hình
 Ví dụ:
@@ -256,6 +292,15 @@ output: "['quick', 'brown', 'jumps', 'over', 'lazy']"
 Gợi ý
 Hoàn thành bài tập này bằng cách viết hàm để kiểm tra các từ trong chuỗi đã cho có độ dài lớn hơn 3. Có thể dùng thêm hàm split() để loại bỏ các khoảng trắng trong chuỗi.
 
+str = str(input())
+ans = []
+def a(str):
+    b = str.split(" ")
+    for i in b:
+        if len(i) > 3:
+            ans.append(i)
+    return ans
+print(a(str))
 
 Bài 24:Cho trước nlà số nguyên được nhập từ bàn phím. Viết chương trình Python để kiểm tra số đó có phải là số abundant hay là không. Sau đó, in kết quả True hoặc False ra màn hình
 Ví dụ:
@@ -268,6 +313,17 @@ Gợi ý
 Hoàn thành bài tập này bằng cách dùng vòng lặp for
 Lưu ý: Trong lĩnh vực lý thuyết số, một số tự nhiên n được gọi là số abundant khi mà tổng các ước số của n (không tính n) lớn hơn n. Ví dụ số 12 có các ước số là 1, 2, 3, 4, 6 có tổng là 1 + 2 + 3 + 4 + 6 = 16 > 12
 
+n = int(input())
+def is_abundant(n):
+    total = 0
+    for i in range(1, n):
+        if n%i==0:
+            total+=i
+    if (total > n):
+        print(True)
+    else:
+        print(False)
+is_abundant(n)
 
 Bài 25: Viết chương trình bằng python tính chu vi & diệntích các hình (abstract)
 Viết chương trình tính chu vi và điện tích của một số hình như sau:
