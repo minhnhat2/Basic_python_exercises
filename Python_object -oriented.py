@@ -124,10 +124,57 @@ def find_a_largest_number(L, a):
   
 Bài 10:Viết hàm đưa vào 1 dictionary có các phần tử có giá trị là số nguyên, tìm và trả về key có giá trị lớn nhất
 
+def find_max_key(d):
+    max_key = None
+    max_val = float('-inf')
+    for key, val in d.items():
+        if val > max_val:
+            max_val = val
+            max_key = key
+    return max_key
+# Nhập thông tin từ người dùng để tạo dictionary
+d = {}
+n = int(input("Nhập số phần tử muốn thêm vào dictionary: "))
+for i in range(n):
+    key = input(f"Nhập key cho phần tử thứ {i+1}: ")
+    val = int(input(f"Nhập giá trị cho phần tử thứ {i+1}: "))
+    d[key] = val
+# Tìm key có giá trị lớn nhất trong dictionary
+max_key = find_max_key(d)
+# In key có giá trị lớn nhất ra màn hình
+if max_key is not None:
+    print(f"Key có giá trị lớn nhất trong dictionary là '{max_key}' với giá trị {d[max_key]}.")
+else:
+    print("Dictionary rỗng.")
 
 Bài 11 :Viết hàm đưa vào 1 dictionary có các phần tử có key là chuỗi, tìm và trả về giá trị của key có độ dài lớn nhất
 
-  
+def find_longest_key(d):
+    longest_key = None
+    longest_len = 0
+    for key in d:
+        if len(key) > longest_len:
+            longest_len = len(key)
+            longest_key = key
+    if longest_key is not None:
+        return d[longest_key]
+    else:
+        return None
+# Nhập thông tin từ người dùng để tạo dictionary
+d = {}
+n = int(input("Nhập số phần tử muốn thêm vào dictionary: "))
+for i in range(n):
+    key = input(f"Nhập key cho phần tử thứ {i+1}: ")
+    val = input(f"Nhập giá trị cho phần tử thứ {i+1}: ")
+    d[key] = val
+# Tìm giá trị của key có độ dài lớn nhất trong dictionary
+longest_val = find_longest_key(d)
+# In giá trị của key có độ dài lớn nhất ra màn hình
+if longest_val is not None:
+    print(f"Giá trị của key có độ dài lớn nhất trong dictionary là '{longest_val}'.")
+else:
+    print("Dictionary rỗng.")
+
 Bài 12:Viết hàm có tham số đầu vào là một list L có các phần tử là chuỗi. Hãy tạo ra một dictionary D mã hóa, với mỗi một phần tử trong L được mã hóa thành một con số (theo thứ tự từ 0 tăng dần lên 1 đơn vị). Sau đó trả về list đã được mã hóa
 Ví dụ:
 Cho
@@ -137,9 +184,37 @@ D = {'đen':0,'vàng':1,'xanh':2,'đỏ':3,'hồng':4}
 Trả về List mã hóa:
 L_mahoa = [0, 1, 2, 1, 2, 3, 4]
 
+def encode_list(L):
+    # Tạo một dictionary mã hóa
+    encoding_dict = {}
+    for item in L:
+        if item not in encoding_dict:
+            encoding_dict[item] = len(encoding_dict)
+    # Sử dụng list comprehension để mã hóa list
+    encoded_list = [encoding_dict[item] for item in L]
+    # Trả về list đã được mã hóa
+    return encoded_list
+# Sử dụng hàm encode_list để mã hóa list L
+L = ["đen", "vàng", "xanh", "vàng", "xanh", "đỏ", "hồng"]
+L_mahoa = encode_list(L)
+# In list đã được mã hóa
+print(L_mahoa)
 
 Bài 13:Viết hàm có tham số đầu vào là một dictionary, hãy tạo một dictionary mới hoán đổi giá trị và key của dictionary đầu vào, rồi trả về dicionary mới đó. Nếu sau khi hoán đổi có 2 key trùng nhau (do dictionary đầu vào có 2 giá trị trùng nhau), hàm trả về None
 
+def exchange_dict(d):
+    # Tạo một dictionary mới để hoán đổi key và value
+    new_dict = {v: k for k, v in d.items()}
+    # Kiểm tra xem new_dict có trùng key hay không
+    if len(new_dict) != len(d):
+        return None
+    else:
+        return new_dict
+# Sử dụng hàm exchange_dict để hoán đổi key và value của dictionary
+d = {'a': 1, 'b': 2, 'c': 3}
+new_dict = exchange_dict(d)
+# In dictionary mới hoán đổi key và value
+print(new_dict)
 
 Bài 14:Một nhà hàng có các món ăn: Gà rán, hamburger, cocacola
 Giá của gà rán là: 30.000đ
@@ -162,12 +237,86 @@ Thuế(5%)9.250đ
 Tổng sau thuế194.250đ
 Phần bên trái có số ký tự là 20 ký tự
 
+def print_bill():
+    # Giá của từng món ăn
+    menu = {'Gà rán': 30000, 'Hamburger': 25000, 'Cocacola': 10000}
+
+    # Yêu cầu người dùng nhập số lượng từng món ăn
+    order = {}
+    for item in menu:
+        quantity = int(input(f'Mời bạn nhập số lượng {item}: '))
+        order[item] = quantity
+    # In ra hóa đơn
+    print('Chào mừng các bạn đến với nhà hàng thức ăn nhanh!')
+    print('Mời bạn nhập số lượng từng món ăn:')
+    for item, price in menu.items():
+        qty = order[item]
+        subtotal = price * qty
+        print(f'{item: <20}{price: >10,}đ x {qty: <5}{subtotal: >20,}đ')
+    # Tính tổng tiền
+    total = sum(menu[item] * order[item] for item in menu)
+    # In tổng tiền
+    print('Tổng:')
+    for item, price in menu.items():
+        qty = order[item]
+        subtotal = price * qty
+        print(f'{item: <20}{subtotal: >20,}đ')
+    print(f'Tổng trước thuế:{total: >16,}đ')
+    tax = total * 0.05
+    print(f'Thế (5%):{tax: >28,.0f}đ')
+    total_after_tax = total + tax
+    print(f'Tổng sau thuế:{total_after_tax: >23,}đ')
+# Gọi hàm in hóa đơn
+print_bill()
 
 Bài 15:Viết hàm cho giá trị đầu vào là list số nguyên dương L và số nguyên dương k. Hãy tạo và trả về một list L_kq có các phần tử là giá trị của phần tử xuất hiện nhiều hơn k lần trong list L theo thứ tự tăng dần
 
+def find_elements_appear_more_than_k_times(L, k):
+    counts = {}
+    for x in L:
+        counts[x] = counts.get(x, 0) + 1
+    L_kq = []
+    for x in sorted(counts.keys()):
+        if counts[x] > k:
+            L_kq.append(x)
+    return L_kq
+# Nhập dữ liệu
+L = []
+while True:
+    x = input("Nhập số nguyên dương (nhập q để dừng): ")
+    if x == "q":
+        break
+    else:
+        L.append(int(x))
+k = int(input("Nhập giá trị k: "))
+# Tìm các phần tử xuất hiện nhiều hơn k lần
+L_kq = find_elements_appear_more_than_k_times(L, k)
+# In kết quả
+print("Các phần tử xuất hiện nhiều hơn", k, "lần trong list là:", L_kq)
 
 Bài 16:Viết hàm cho giá trị đầu vào là list số nguyên dương L và số nguyên dương k. Tìm và trả về đoạn list dài nhất trong L có giá trị trung bình là k
 
+def longest_sublist_with_average_k(L, k):
+    # Tính các đoạn liên tiếp trong L có giá trị trung bình bằng k
+    sublists = []
+    for i in range(len(L)):
+        for j in range(i+1, len(L)+1):
+            sublist = L[i:j]
+            if sum(sublist) / len(sublist) == k:
+                sublists.append(sublist)
+    # Tìm đoạn dài nhất
+    longest_sublist = []
+    for sublist in sublists:
+        if len(sublist) > len(longest_sublist):
+            longest_sublist = sublist
+    return longest_sublist
+# Nhập giá trị đầu vào
+L = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+k = 3
+# Tìm đoạn dài nhất có giá trị trung bình bằng k
+longest_sublist = longest_sublist_with_average_k(L, k)
+# In kết quả
+print("Đoạn dài nhất có giá trị trung bình bằng", k, "là", longest_sublist)
 
 Bài 17:Một người dùng số tiền là U đô-la và V Euro để mua một loại nguyên liệu sản xuất.
 Có N công ty nước ngoài bán nguyên liệu trên được đánh số từ 1 đến N. Công ty thứ i có giá bán Ai đô la/1 kg nguyên liệu và Bi Euro/1 kg nguyên liệu.
@@ -176,6 +325,33 @@ Hãy giúp người đó tìm cách chọn ra 2 công ty để mua hàng sao cho
 Nhập vào: U, V và List A và List B
 In ra: Số lượng nguyên liệu S (kg) người đó mua được với 2 chữ số thập phân.
 
+# Hàm tính số lượng nguyên liệu tối đa có thể mua được với U đô-la và V Euro
+def max_quantity(U, V, A, B):
+    max_q = 0  # Số lượng nguyên liệu tối đa có thể mua được
+    n = len(A)  # Số lượng công ty bán nguyên liệu
+    for i in range(n):
+        for j in range(i + 1, n):
+            # Nếu hai công ty bán khác loại tiền tệ
+            if (A[i] >= U and B[i] < V) or (A[i] < U and B[i] >= V):
+                if (A[j] >= U and B[j] < V) or (A[j] < U and B[j] >= V):
+                    # Tính số lượng nguyên liệu tối đa mua được ở hai công ty
+                    q = min(U / A[i], V / B[i]) + min(U / A[j], V / B[j])
+                    if q > max_q:
+                        max_q = q
+    return '{:.2f}'.format(max_q)
+# Nhập giá trị đầu vào
+U = float(input("Nhập số tiền đô-la của bạn: "))
+V = float(input("Nhập số tiền Euro của bạn: "))
+n = int(input("Nhập số lượng công ty bán nguyên liệu: "))
+A = []
+B = []
+for i in range(n):
+    ai, bi = input("Nhập giá bán của công ty {}: ".format(i+1)).split()
+    A.append(float(ai))
+    B.append(float(bi))
+# Tính và in ra số lượng nguyên liệu tối đa có thể mua được
+max_quantity = max_quantity(U, V, A, B)
+print("Số lượng nguyên liệu tối đa có thể mua được là:", max_quantity, "kg")
 
 Bài 18:Phỏng đoán COLLATZ
 Giả sử ta có một số n
@@ -195,6 +371,21 @@ In ra:
 5,16,8,4,2,1
 6,3,10,5,16,8,4,2,1
 
+def collatz(n):
+    seq = [n]
+    while n > 1:
+        if n % 2 == 0:
+            n = n // 2
+        else:
+            n = 3 * n + 1
+        seq.append(n)
+    return seq
+def collatz_sequence(m):
+    for i in range(1, m + 1):
+        seq = collatz(i)
+        print(','.join(str(x) for x in seq))
+m = int(input("Nhap vao so nguyen duong m: "))
+collatz_sequence(m)
 
 Bài 19:Một khách sạn có N phòng đôi được đánh số từ 1 đến N và M đoàn khách.
 Với mỗi đoàn khách, ta xếp mỗi cặp khách của đoàn vào một phòng trống theo thứ tự phòng tăng dần.
@@ -211,6 +402,25 @@ N = 5, M = 3
 doankhach = [2,3,2]
 Ta in: 2, 2, 1, 2, 0
 
+N, M = map(int, input().split())
+doankhach = list(map(int, input().split()))
+rooms = [0] * N
+for i in range(M):
+    p = doankhach[i]
+    for j in range(N):
+        if p == 0:
+            break
+        if rooms[j] == 0:
+            rooms[j] = 2
+            p -= 2
+        elif rooms[j] == 1:
+            rooms[j] += 1
+            p -= 1
+for i in range(N):
+    if rooms[i] == 0:
+        print(0)
+    else:
+        print(rooms[i])
 
 Bài 20:Cho số tự nhiên n được nhập vào từ bàn phím, bạn hãy viết hàm kiểm tra xem n có phải là số nguyên tố không, nếu có trả về True, ngược lại trả về False.
 Số nguyên tố là các số tự nhiên mà chỉ có 2 ước là 1 và chính nó. Ví dụ: 2, 3, 5, 7, 11, 13, 17,... là các số nguyên tố.
