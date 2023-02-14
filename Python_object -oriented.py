@@ -562,3 +562,5 @@ Yêu cầu: tạo ra một menu với các chức năng sau:
 6. Sắp xếp sinh viên theo tên. 
 6. Sắp xếp sinh viên theo ID.
 8. Hiển thị danh sách sinh viên.
+
+Bài giải :https://github.com/minhnhat2002/Quan_ly_sinh_vien.py/blob/main/QLDSSV_py
