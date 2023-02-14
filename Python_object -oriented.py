@@ -559,6 +559,6 @@ Yêu cầu: tạo ra một menu với các chức năng sau:
 3. Xóa sinh viên bởi ID.
 4. Tìm kiếm sinh viên theo tên.
 5. Sắp xếp sinh viên theo điểm trung bình (GPA).
-6. Sắp xếp sinh viên theo tên.
+6. Sắp xếp sinh viên theo tên. 
 6. Sắp xếp sinh viên theo ID.
 8. Hiển thị danh sách sinh viên.
